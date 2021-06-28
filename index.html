@@ -1,5 +1,101 @@
 <html>
 
+    <head>
+  <!-- OneTrust Cookies Consent Notice start -->
+  <script id="onetrustcdn" src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="7bf039dc-3223-4ca5-aa54-e0cd87121156"></script>
+
+<script type="text/javascript">
+function OptanonWrapper() {
+	var cookiePolicyLink = 'https://www.wminewmedia.com/cookies-policy/';
+	var allLinks = document.querySelectorAll('a');
+	for(i = 0; i < allLinks.length; i++) {
+		let href = allLinks[i].href;
+		if (href.indexOf(cookiePolicyLink) > -1 && href.indexOf('?ot=') < 0) {
+			href = href + '?ot=' + document.getElementById('onetrustcdn').getAttribute('data-domain-script') + '&url=' + window.location.hostname;
+			allLinks[i].setAttribute("href", href);
+			allLinks[i].setAttribute("target", "_blank");
+		}
+	}
+	var eOT = new Event("OneTrustGroupsUpdated");
+	document.dispatchEvent(eOT);
+}
+</script>
+<link rel="stylesheet" type="text/css" href="https://www.wminewmedia.com/cookies-policy/onetrust/ot.css">
+     <!-- OneTrust Cookies Consent Notice end -->
+    <script>
+	var reportSuitesStr = "wmg,wmgatl,wmglilskiesofficial.com";
+
+	digitalData = {
+		settings : {
+			reportSuites : reportSuitesStr
+		},
+		content : {
+			artist : "Lil Skies",
+			label : "Atlantic Records"
+		},
+		page : {
+			pageInfo : {
+				pageName : "",
+				server : "",
+				platform:"MIS Custom Page",
+				devTeam:"WMAS"
+			},
+			category : {
+				primaryCategory : "",
+				pageType : ""
+			}
+		}
+	}
+
+	digitalData.page.pageInfo.server = digitalData.content.artist + ":Site";
+
+	var string;
+	var pathname = window.location.pathname;
+
+	if (pathname == "/") {
+		pathname = "home";
+	} else if (pathname.length > 2 && pathname[pathname.length - 1] == "/") {
+		pathname = pathname.substring(0, pathname.length - 1)
+	}
+
+	pathname = pathname.split("/");
+	string = pathname[pathname.length - 1];
+
+	var pageMapping = {
+		"/" : "Homepage",
+		"home" : "Homepage",
+		"music" : "Music",
+		"shows" : "Tour",
+		"videos" : "Videos",
+		"lilskies" : "Homepage",
+		"socials": "Livefyre",
+		"reskin": "Homepage",
+		"77167": "Homepage"
+	}
+	var pageNameMapping = {
+		"/" : "Homepage",
+		"home" : "homepage",
+		"music" : "Music:Landing",
+		"shows" : "Tour:Upcoming",
+		"videos" : "Videos:Landing",
+		"lilskies" : "Homepage",
+		"socials": "livefyre:landing",
+		"reskin": "Homepage",
+		"77167": "Homepage"
+	}
+
+	digitalData.page.pageInfo.pageName = digitalData.content.artist + ":" + pageMapping[string];
+	digitalData.page.category.pageType = pageNameMapping[string];
+	digitalData.page.category.primaryCategory = digitalData.content.artist + ":" + pageMapping[string];
+	//Exception for homepage as per Analytics team
+	if (string === '' || string ==='home' || string === 'lilskies' || string === 'reskin' || string === '77541') {
+		digitalData.page.pageInfo.pageName = digitalData.content.artist + ":" + "Homepage";
+		digitalData.page.category.pageType = "homepage";
+		digitalData.page.category.primaryCategory = digitalData.content.artist + ":Home";
+	}
+
+</script>
+
     <!-- List of Stylesheets -->
 <link type="text/css" rel="stylesheet" href="//fast.fonts.net/cssapi/4c890fd5-1df1-4d2f-aae5-86b4163bab6b.css"/>
 <link rel="stylesheet" href="//use.typekit.net/amb3wak.css">
