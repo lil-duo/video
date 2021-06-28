@@ -1,40 +1,95 @@
 <html>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/hCFeZO_6Xuo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <div class="container">
-	<h1>
-		Multiple scroll synchronised videos. 
-		<span>(Scroll down)</span>
-	</h1>
+    <head>
+        <meta charset=utf-8 />
+        <title>JS Bin</title>
+        <style>
+            #right {
+                position: absolute;
+                top: 2000px;
+            }
+            #video1 {
+                position: absolute;
+                left: 2000px;
+                top: 2000px;
+            }
+            #video2 {
+                position: absolute;
+                left: 2000px;
+                top: 3000px;
+            }
 
-	<div class="one">
-		<video class="scroll-sync">
-			<source src="https://www.youtube.com/embed/hCFeZO_6Xuo" type="video/webm">
-			<source src="https://www.html5rocks.com/tutorials/video/basics/devstories.mp4" type="video/mp4">
-		</video>
-	</div>
+        </style>
 
-	<h1>There can even be two!</h1>
+        <style id="jsbin-css">
+        </style>
+    </head>
+    #
+    <body style="width: 4000px; height: 4000px;">
+        <div id="info"></div>
+        <div id="down">
+            scroll down please...
+        </div>
+        <div id="right">
+            scroll right please...
+        </div>
+        <video id="video1">
+            <source src="http://video-js.zencoder.com/oceans-clip.mp4"/>
 
-	<div class="two">
-		<video class="scroll-sync">
-			<source src="https://www.html5rocks.com/tutorials/video/basics/devstories.webm" type="video/webm">
-			<source src="https://www.html5rocks.com/tutorials/video/basics/devstories.mp4" type="video/mp4">
-		</video>
-		<video class="scroll-sync">
-			<source src="https://www.html5rocks.com/tutorials/video/basics/devstories.webm" type="video/webm">
-			<source src="https://www.html5rocks.com/tutorials/video/basics/devstories.mp4" type="video/mp4">
-		</video>
-	</div>
+        </video>
+        <script>
+            var video = document.getElementById('video1'), fraction = 0.8;
 
-	<h1>Here's another one..</h1>
+            function checkScroll() {
+                var x = video.offsetLeft, y = video.offsetTop, w = video.offsetWidth, h = video.offsetHeight, r = x + w, //right
+                b = y + h, //bottom
+                visibleX, visibleY, visible;
 
-	<div class="one">
-		<video class="scroll-sync">
-			<source src="https://www.html5rocks.com/tutorials/video/basics/devstories.webm" type="video/webm">
-			<source src="https://www.html5rocks.com/tutorials/video/basics/devstories.mp4" type="video/mp4">
-		</video>
-	</div>
+                visibleX = Math.max(0, Math.min(w, window.pageXOffset + window.innerWidth - x, r - window.pageXOffset));
+                visibleY = Math.max(0, Math.min(h, window.pageYOffset + window.innerHeight - y, b - window.pageYOffset));
 
-	<h1>Now scroll back up!</h1>
-</div>
+                visible = visibleX * visibleY / (w * h);
+
+                if (visible > fraction) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
+            }
+
+            checkScroll();
+            window.addEventListener('scroll', checkScroll, false);
+            window.addEventListener('resize', checkScroll, false);
+        </script>
+
+        <video id="video2">
+            <source src="http://video-js.zencoder.com/oceans-clip.mp4"/>
+
+        </video>
+        <script>
+            var video = document.getElementById('video2'), fraction = 0.8;
+
+            function checkScroll() {
+                var x = video.offsetLeft, y = video.offsetTop, w = video.offsetWidth, h = video.offsetHeight, r = x + w, //right
+                b = y + h, //bottom
+                visibleX, visibleY, visible;
+
+                visibleX = Math.max(0, Math.min(w, window.pageXOffset + window.innerWidth - x, r - window.pageXOffset));
+                visibleY = Math.max(0, Math.min(h, window.pageYOffset + window.innerHeight - y, b - window.pageYOffset));
+
+                visible = visibleX * visibleY / (w * h);
+
+                if (visible > fraction) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
+            } checkScroll();
+            window.addEventListener('scroll', checkScroll, false);
+            window.addEventListener('resize', checkScroll, false);
+
+        </script>
+
+    </body>
 </html>
