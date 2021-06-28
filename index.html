@@ -1,0 +1,29 @@
+<html>
+</div><!-- <script type="text/javascript" src="https://www.youtube.com/iframe_api"></script> -->
+<script id="videoTmplate" type="text/x-handlebars-template">
+    <li class="videoItem">
+                <div class="videoOuterWrapper">
+                    
+                    <div class="videoThumbnail" id="ytplayer{{{[video-id]}}}" data-videoplaylistid="{{{[videoplaylist-id]}}}" data-videoid="{{{[video-id]}}}">
+                        <img src="../images/{{{[video-thumbnail]}}}" />
+                        <div class="playIcon"><i class="fas fa-play"></i></div>
+                    </div>
+                    <!-- <iframe src="" frameborder="0"  allow="encrypted-media" allowfullscreen></iframe> -->
+                </div>
+                <div class="videoAlbumName"><h1><span>{{{[video-name]}}}</span></h1></div>
+            </li>
+    </script>
+    
+    
+    <div class="videoContentWrapper">
+        <ul class="owl-carousel">
+            <div class="videoSection" id="videoSection"></div>  
+        </ul>
+    </div>
+
+<div class="watch-button">
+<div class="watch-link">
+<a href="https://www.youtube.com/channel/UCLEyFXOmaIgG6h4_6wqLx7Q" target="_blank">WATCH MORE</a>
+</div>
+</div>
+</html>
